@@ -13,7 +13,7 @@ class Company < ApplicationRecord
     location_hash = ZipCodes.identify(self.zip_code)
 
     if location_hash.present?
-      self.state = location_hash[:state_name]
+      self.state = location_hash[:state_code]
       self.city = location_hash[:city]
     else
       self.errors.add(:zip_code, 'is invalid. Kindly enter a valid zip code.')

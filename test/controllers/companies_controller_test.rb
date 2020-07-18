@@ -58,7 +58,7 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     last_company = Company.last
     assert_equal "New Test Company", last_company.name
     assert_equal "28173", last_company.zip_code
-    assert_equal location_data[:state_name], last_company.state
+    assert_equal location_data[:state_code], last_company.state
     assert_equal location_data[:city], last_company.city
 
   end
