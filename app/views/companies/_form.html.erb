@@ -1,5 +1,12 @@
 <div class="py-5">
   <%= form_for @company do |f| %>
+    <% if @company.errors.present? %>
+      <ul class="alert alert-danger" id="alert_message">
+      <% @company.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
     <div class="row my-lg-3">
       <div class="col-lg-3">
@@ -19,7 +26,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :zip_code, class: "form-control", placeholder: "93003", required: true %>
+          <%= f.text_field :zip_code, class: "form-control", maxlength: 5, placeholder: "93003", required: true %>
         </div>
       </div>
     </div>
@@ -53,7 +60,10 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@getmainstreet.com",
+                           pattern: "^[A-Za-z0-9._%+-]+@getmainstreet.com$",
+                           title: 'Domain should be getmainstreet.com only.'
+          %>
         </div>
       </div>
     </div>
